@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-slim
 
     steps:
-      - name: Check Issue Labels
+      - name: Check New Issue
         uses: ldez/no-blank-issue@v1.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
