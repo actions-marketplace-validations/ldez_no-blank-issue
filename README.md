@@ -57,7 +57,7 @@ jobs:
 
     steps:
       - name: Check New Issue
-        uses: ldez/no-blank-issue@v1.1.0
+        uses: ldez/no-blank-issue@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
