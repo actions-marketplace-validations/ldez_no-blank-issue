@@ -60490,11 +60490,13 @@ async function run() {
         info(`Issue #${issue.number} has no labels. Closing with a message.`);
         const octokit = githubExports.getOctokit(token);
         const author = issue.user?.login ?? 'there';
+        const { serverUrl } = githubExports.context;
+        const issueFormsUrl = `${serverUrl}/${repo.owner}/${repo.repo}/issues/new/choose`;
         await octokit.rest.issues.createComment({
             owner: repo.owner,
             repo: repo.repo,
             issue_number: issue.number,
-            body: `Hi @${author}, thanks for opening an issue.\n\nIt looks like you did not use one of the provided issue forms when creating this issue.\nTo help us triage and respond efficiently, please open a new issue using one of the available issue forms.\n\nThis issue is being closed automatically.`
+            body: `Hi @${author}, thanks for opening an issue.\n\nIt looks like you did not use one of the provided issue forms when creating this issue.\nTo help us triage and respond efficiently, please open a new issue using one of the [available issue forms](${issueFormsUrl}).\n\nThis issue is being closed automatically.`
         });
         await octokit.rest.issues.update({
             owner: repo.owner,
