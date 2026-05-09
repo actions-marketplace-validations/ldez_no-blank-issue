@@ -8,10 +8,6 @@ MD004:
 MD013:
   tables: false
 
-# Ordered list item prefix
-MD029:
-  style: one
-
 # Spaces after list markers
 MD030:
   ul_single: 1
