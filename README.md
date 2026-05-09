@@ -24,11 +24,13 @@ If the issue has **no labels**, the action will:
 
 The message is:
 
-```
+```markdown
 Hi [name of the issue author], thanks for opening an issue.
 
-It looks like you did not use one of the provided issue forms when creating this issue.
-To help us triage and respond efficiently, please open a new issue using one of the [available issue forms](https://github.com/<user/org><repo_name>/issues/new/choose).
+It looks like you did not use one of the provided issue forms when creating this
+issue. To help us triage and respond efficiently, please open a new issue using
+one of the
+[available issue forms](https://github.com/<user/org><repo_name>/issues/new/choose).
 
 This issue is being closed automatically.
 ```
