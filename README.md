@@ -22,6 +22,17 @@ If the issue has **no labels**, the action will:
 1. Post a comment explaining that the issue forms must be used.
 2. Close the issue as **not planned**.
 
+The message is:
+
+```
+Hi [name of the issue author], thanks for opening an issue.
+
+It looks like you did not use one of the provided issue forms when creating this issue.
+To help us triage and respond efficiently, please open a new issue using one of the [available issue forms](https://github.com/<user/org><repo_name>/issues/new/choose).
+
+This issue is being closed automatically.
+```
+
 ## Usage
 
 Add the following workflow to your repository at
