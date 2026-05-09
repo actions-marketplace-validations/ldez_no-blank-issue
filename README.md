@@ -6,12 +6,13 @@
 ![CodeQL](https://github.com/ldez/no-blank-issue/actions/workflows/codeql-analysis.yml/badge.svg)
 ![Coverage](./badges/coverage.svg)
 
-A GitHub Action that automatically closes newly opened issues that have no labels,
-indicating that the issue forms have not been used.
+A GitHub Action that automatically closes newly opened issues that have no
+labels, indicating that the issue forms have not been used.
 
 ## How It Works
 
-When a new issue is opened, this action checks whether it has at least one label.
+When a new issue is opened, this action checks whether it has at least one
+label.
 
 GitHub can automatically assign labels when using
 [issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#creating-issue-forms).
@@ -23,7 +24,8 @@ If the issue has **no labels**, the action will:
 
 ## Usage
 
-Add the following workflow to your repository at `.github/workflows/no-blank-issue.yml`:
+Add the following workflow to your repository at
+`.github/workflows/no-blank-issue.yml`:
 
 ```yaml
 name: No Blank Issues
@@ -52,7 +54,7 @@ jobs:
 ## Inputs
 
 | Input          | Description                      | Required | Default               |
-|----------------|----------------------------------|----------|-----------------------|
+| -------------- | -------------------------------- | -------- | --------------------- |
 | `github-token` | GitHub token used for API calls. | `true`   | `${{ github.token }}` |
 
 ## Development
