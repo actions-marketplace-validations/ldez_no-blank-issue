@@ -85,7 +85,7 @@ describe('main.ts', () => {
       owner: 'test-owner',
       repo: 'test-repo',
       issue_number: 7,
-      body: `Hi @octocat, thanks for opening an issue.\n\nIt looks like you did not use one of the provided issue forms when creating this issue.\nTo help us triage and respond efficiently, please open a new issue using one of the available issue forms.\n\nThis issue is being closed automatically.`
+      body: `Hi @octocat, thanks for opening an issue.\n\nIt looks like you did not use one of the provided issue forms when creating this issue.\nTo help us triage and respond efficiently, please open a new issue using one of the [available issue forms](https://github.com/test-owner/test-repo/issues/new/choose).\n\nThis issue is being closed automatically.`
     })
     expect(mockUpdateIssue).toHaveBeenCalledWith({
       owner: 'test-owner',
