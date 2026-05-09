@@ -60505,7 +60505,13 @@ async function run() {
             state: 'closed',
             state_reason: 'not_planned'
         });
-        info(`Issue #${issue.number} has been closed.`);
+        await octokit.rest.issues.lock({
+            owner: repo.owner,
+            repo: repo.repo,
+            issue_number: issue.number,
+            lock_reason: 'off-topic'
+        });
+        info(`Issue #${issue.number} has been closed and locked.`);
     }
     catch (error) {
         // Fail the workflow run if an error occurs
