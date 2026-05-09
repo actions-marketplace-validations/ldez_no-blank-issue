@@ -50,7 +50,14 @@ export async function run(): Promise<void> {
       state_reason: 'not_planned'
     })
 
-    core.info(`Issue #${issue.number} has been closed.`)
+    await octokit.rest.issues.lock({
+      owner: repo.owner,
+      repo: repo.repo,
+      issue_number: issue.number,
+      lock_reason: 'off-topic'
+    })
+
+    core.info(`Issue #${issue.number} has been closed and locked.`)
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)

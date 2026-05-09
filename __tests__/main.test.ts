@@ -20,12 +20,14 @@ const { run } = await import('../src/main.js')
 
 const mockCreateComment = jest.fn<() => Promise<void>>()
 const mockUpdateIssue = jest.fn<() => Promise<void>>()
+const mockLockIssue = jest.fn<() => Promise<void>>()
 
 const mockOctokit = {
   rest: {
     issues: {
       createComment: mockCreateComment,
-      update: mockUpdateIssue
+      update: mockUpdateIssue,
+      lock: mockLockIssue
     }
   }
 }
@@ -51,6 +53,7 @@ describe('main.ts', () => {
     )
     expect(mockCreateComment).not.toHaveBeenCalled()
     expect(mockUpdateIssue).not.toHaveBeenCalled()
+    expect(mockLockIssue).not.toHaveBeenCalled()
   })
 
   it('Does nothing when the issue already has labels', async () => {
@@ -68,6 +71,7 @@ describe('main.ts', () => {
     )
     expect(mockCreateComment).not.toHaveBeenCalled()
     expect(mockUpdateIssue).not.toHaveBeenCalled()
+    expect(mockLockIssue).not.toHaveBeenCalled()
   })
 
   it('Closes the issue when it has no labels', async () => {
@@ -94,7 +98,15 @@ describe('main.ts', () => {
       state: 'closed',
       state_reason: 'not_planned'
     })
-    expect(core.info).toHaveBeenCalledWith('Issue #7 has been closed.')
+    expect(mockLockIssue).toHaveBeenCalledWith({
+      owner: 'test-owner',
+      repo: 'test-repo',
+      issue_number: 7,
+      lock_reason: 'off-topic'
+    })
+    expect(core.info).toHaveBeenCalledWith(
+      'Issue #7 has been closed and locked.'
+    )
   })
 
   it('Falls back to @there when user is missing', async () => {
@@ -132,6 +144,9 @@ describe('main.ts', () => {
     )
     expect(mockUpdateIssue).toHaveBeenCalledWith(
       expect.objectContaining({ issue_number: 9, state: 'closed' })
+    )
+    expect(mockLockIssue).toHaveBeenCalledWith(
+      expect.objectContaining({ issue_number: 9, lock_reason: 'off-topic' })
     )
   })
 

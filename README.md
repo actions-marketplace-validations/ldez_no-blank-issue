@@ -21,6 +21,7 @@ If the issue has **no labels**, the action will:
 
 1. Post a comment explaining that the issue forms must be used.
 2. Close the issue as **not planned**.
+3. Lock the issue.
 
 The message is:
 
