@@ -60496,7 +60496,12 @@ async function run() {
             owner: repo.owner,
             repo: repo.repo,
             issue_number: issue.number,
-            body: `Hi @${author}, thanks for opening an issue.\n\nIt looks like you did not use one of the provided issue forms when creating this issue.\nTo help us triage and respond efficiently, please open a new issue using one of the [available issue forms](${issueFormsUrl}).\n\nThis issue is being closed automatically.`
+            body: `Hi @${author}, thanks for opening an issue.
+
+It looks like you did not use one of the provided issue forms when creating this issue.
+To help us triage and respond efficiently, please open a new issue using one of the [available issue forms](${issueFormsUrl}).
+
+This issue is being closed automatically.`
         });
         await octokit.rest.issues.update({
             owner: repo.owner,
